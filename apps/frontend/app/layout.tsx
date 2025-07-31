@@ -1,33 +1,13 @@
-import type { Metadata } from 'next';
-import { Geist, Space_Grotesk } from 'next/font/google';
-import './(default)/css/globals.css';
-
-const spaceGrotesk = Space_Grotesk({
-  variable: '--font-space-grotesk',
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-const geist = Geist({
-  variable: '--font-geist',
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-export const metadata: Metadata = {
-  title: 'Resume Matcher',
-  description: 'Build your resume with Resume Matcher',
-  applicationName: 'Resume Matcher',
-  keywords: ['resume', 'matcher', 'job', 'application'],
-};
+import { ResumePreviewProvider } from '@/components/common/resume_previewer_context';
+import '@/app/css/globals.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-US">
-      <body
-        className={`${geist.variable} ${spaceGrotesk.variable} antialiased bg-white text-gray-900`}
-      >
-        <div>{children}</div>
+    <html lang="en">
+      <body>
+        <ResumePreviewProvider>
+          <main className="min-h-screen flex flex-col">{children}</main>
+        </ResumePreviewProvider>
       </body>
     </html>
   );

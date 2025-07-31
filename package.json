@@ -4,22 +4,22 @@
     "description": "Veridis Quo.",
     "private": true,
     "scripts": {
-        "install:frontend": "cd apps/frontend && npm install",
+        "install:frontend": "cd apps/frontend && yarn install",
         "install:backend": "cd apps/backend && uv venv && uv pip install .",
-        "install": "npm run install:frontend && npm run install:backend",
+        "install": "yarn install:frontend && yarn install:backend",
         "dev:backend": "cd apps/backend && uv run uvicorn app.main:app --reload --port 8000 --timeout-keep-alive 300 --timeout-graceful-shutdown 300",
-        "dev:frontend": "cd apps/frontend && npm run dev",
-        "dev": "concurrently \"npm:dev:backend\" \"npm:dev:frontend\"",
-        "build:frontend": "cd apps/frontend && npm run build",
+        "dev:frontend": "cd apps/frontend && yarn dev",
+        "dev": "concurrently \"yarn:dev:backend\" \"yarn:dev:frontend\"",
+        "build:frontend": "cd apps/frontend && yarn build",
         "build:backend": "cd apps/backend && uv run python -c \"print('Backend build complete')\"",
-        "build": "npm run build:frontend && npm run build:backend",
+        "build": "yarn build:frontend && yarn build:backend",
         "start:backend": "cd apps/backend && uv run uvicorn app.main:app --port 8000",
-        "start:frontend": "cd apps/frontend && npm start",
-        "start": "concurrently \"npm:start:backend\" \"npm:start:frontend\"",
-        "lint:frontend": "cd apps/frontend && npm run lint",
-        "lint": "npm run lint:frontend"
+        "start:frontend": "cd apps/frontend && yarn start",
+        "start": "concurrently \"yarn:start:backend\" \"yarn:start:frontend\"",
+        "lint:frontend": "cd apps/frontend && yarn lint",
+        "lint": "yarn lint:frontend"
     },
     "devDependencies": {
-        "concurrently": "^9.1.2"
+        "concurrently": "^9.2.0"
     }
 }
